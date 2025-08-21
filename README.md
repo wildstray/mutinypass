@@ -18,3 +18,5 @@ What about security, company policy and so on? Enough is too much. Mutiny!
 
 ## Is this a real and secure password manager?
 This is a PoC and its use will be everyone's responsibility; the author releses this code "as-is" and assumes no responsibility at all! This isn't and won't be a secure password manager like Keepass, this is complementary to Keepass.
+
+<img alt="Homer Simpson bird keyboard" src="https://i.giphy.com/HQGzdiNhg52oM.webp" width="250" />
