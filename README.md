@@ -21,19 +21,23 @@ This project offers a greater comfort and ergonimics to computer engineers... ho
 
 <img alt="Homer Simpson bird keyboard" src="https://i.giphy.com/HQGzdiNhg52oM.webp" width="250" />
 
-## Tech details and future improvements
+## Tech details, spin-offs and future improvements
 Library used:
  * [ArduinoJson](https://github.com/bblanchon/ArduinoJson)
  * [AsyncFsWebServer](https://github.com/cotestatnt/async-esp-fs-webserver)
  * [ESP32-NimBLE-Keyboard](https://github.com/wakwak-koba/ESP32-NimBLE-Keyboard)
+ * [TaskScheduler](https://github.com/arkhipenko/TaskScheduler)
  * [TOTP-Arduino](https://github.com/lucadentella/TOTP-Arduino)
+ * [Arduino-UUID](https://github.com/RobTillaart/UUID)
 
 Actually this software *IS NOT SECURE* cause AsyncFsWebServer does not support HTTPS and configuration file is a plain json file on the FFat partition, including plain text passwords. I'm considering to migrate from AsyncFsWebServer to PsychicHttp to add support for SSL. 
 OTPs are planned but currently not supported. Anyway I already modified and tested TOTP-Arduino library to supports 6-8-10 digits code and SHA256, SHA512, using [Mbed-TLS](https://github.com/Mbed-TLS/mbedtls) library, but I have to write entire webUI and backend to configure OTPs.
 
 I wrote a really simple index.html page for key press actions and for key press sequences and accounts configuration and other parameters. This page is not integrated with AsyncFsWebServer setup (and probably will not be). So you have to use /setup to configure WiFi connection or to update firmware (or to upload data into FFat partition) and index.html for MutinyPass operations. It's planned to support hardware keys thru input pins.
 
-There is space for improvements and actually Arduino Nano ESP32 is used at ~35% of program space and ~20% of RAM. Suggestions and PR are very welcome.
+About the BLE keyboard emulation, there would be a separate discussion to make and it could also have tech spin-offs. All available libraries supports only US keyboard layout, supports also 7 bit ASCII and also print() cannot correctly works also cause Arduino's Strings are UTF-8 and not ASCII extended or Latin1 or so. I had to heavily modify the ESP32-NimBLE-Keyboard.
+
+There is space for further improvements and actually Arduino Nano ESP32 is used at ~35% of program space and ~20% of RAM. Suggestions and PR are very welcome! About Arduino-TOTP and ESP32-NimBLE-Keyboard, I'll fork and ask per PRs, but it's not the focus of this project.
 
 ## License and release notes
 This is a PoC and its use will be everyone's responsibility; the author releses this code "as-is" and assumes no responsibility at all! This project is released under GPLv3.
