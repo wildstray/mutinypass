@@ -21,7 +21,7 @@ This project offers a greater comfort and ergonimics to computer engineers... ho
 
 <img alt="Homer Simpson bird keyboard" src="https://i.giphy.com/HQGzdiNhg52oM.webp" width="250" />
 
-## Tech details, spin-offs and future improvements
+## Tech details, spin-offs, limitations and future improvements
 Library used:
  * [ArduinoJson](https://github.com/bblanchon/ArduinoJson)
  * [AsyncFsWebServer](https://github.com/cotestatnt/async-esp-fs-webserver)
@@ -36,6 +36,8 @@ OTPs are planned but currently not supported. Anyway I already modified and test
 I wrote a really simple index.html page for key press actions and for key press sequences and accounts configuration and other parameters. This page is not integrated with AsyncFsWebServer setup (and probably will not be). So you have to use /setup to configure WiFi connection or to update firmware (or to upload data into FFat partition) and index.html for MutinyPass operations. It's planned to support hardware keys thru input pins.
 
 About the BLE keyboard emulation, there would be a separate discussion to make and it could also have tech spin-offs. All available libraries supports only US keyboard layout and 7 bit ASCII. I had to modify the ESP32-NimBLE-Keyboard. For now, are supported BR,DE,DK,ES,FR,IT,HU,US,PT,SE layouts and only 7 bit ASCII. To made extended ASCII usable, Arduino String (UTF-8) must be converted in ISO 8859-1/Latin1 and new complete (256 bytes) layouts are mandatory.
+
+Note: there is an *important hardware limitation* due to the use of [only one radio for WiFi and BLE for ESP32](https://docs.espressif.com/projects/esp-idf/en/v5.1.1/esp32/api-guides/coexist.html), so once bluetooth is connected, WiFi will became slow, very slow and laggy but this is normal and cannot be optimized further (this is mainly the reason to use hardware keys instead of a webUI).
 
 There is space for further improvements and Arduino Nano ESP32 is used only for ~35% of program space and ~20% of RAM. Suggestions and PR are very welcome! About Arduino-TOTP and ESP32-NimBLE-Keyboard, I'll fork and ask per PRs, but it's not the focus of this project.
 
