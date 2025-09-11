@@ -29,17 +29,21 @@ Library used:
  * [TaskScheduler](https://github.com/arkhipenko/TaskScheduler)
  * [TOTP-Arduino](https://github.com/lucadentella/TOTP-Arduino)
  * [Arduino-UUID](https://github.com/RobTillaart/UUID)
+ * [ezButton](https://github.com/ArduinoGetStarted/button)
+ * [Base32-Decode](https://github.com/dirkx/Arduino-Base32-Decode)
 
 Actually this software *IS NOT SECURE* cause AsyncFsWebServer does not support HTTPS and configuration file is a plain json file on the FFat partition, including plain text passwords. I'm considering to migrate from AsyncFsWebServer to PsychicHttp to add support for SSL. 
-OTPs are planned but currently not supported. Anyway I already modified and tested TOTP-Arduino library to supports 6-8-10 digits code and SHA256, SHA512, using [Mbed-TLS](https://github.com/Mbed-TLS/mbedtls) library, but I have to write entire webUI and backend to configure OTPs.
+OTPs are currently supported. I modified and tested TOTP-Arduino library to supports 6-8-10 digits code and SHA256, SHA512, using [Mbed-TLS](https://github.com/Mbed-TLS/mbedtls) library.
 
-I wrote a really simple index.html page for key press actions and for key press sequences and accounts configuration and other parameters. This page is not integrated with AsyncFsWebServer setup (and probably will not be). So you have to use /setup to configure WiFi connection or to update firmware (or to upload data into FFat partition) and index.html for MutinyPass operations. It's planned to support hardware keys thru input pins.
+I wrote a really simple index.html page for key press actions and for key press sequences and accounts configuration and other parameters. This page is not integrated with AsyncFsWebServer setup (and probably will not be). So you have to use /setup to configure WiFi connection or to update firmware (or to upload data into FFat partition) and index.html for MutinyPass operations. It's supported (and preferred to use!) hardware buttons thru digital input pins (D2-D12).
 
-About the BLE keyboard emulation, there would be a separate discussion to make and it could also have tech spin-offs. All available libraries supports only US keyboard layout and 7 bit ASCII. I had to modify the ESP32-NimBLE-Keyboard. For now, are supported BR,DE,DK,ES,FR,IT,HU,US,PT,SE layouts and only 7 bit ASCII. To made extended ASCII usable, Arduino String (UTF-8) must be converted in ISO 8859-1/Latin1 and new complete (256 bytes) layouts are mandatory.
+About the BLE keyboard emulation, there would be a separate discussion to make and it could also have tech spin-offs. All available libraries supports only US keyboard layout and 7 bit ASCII. I had to modify the ESP32-NimBLE-Keyboard. For now, are supported BR,DE,DK,ES,FR,IT,HU,US,PT,SE layouts and only 7 bit ASCII. To made extended ASCII usable, String (UTF-8) must be converted in ISO 8859-1/Latin1 and new complete (256 bytes) layouts are mandatory.
 
-Note: there is an *important hardware limitation* due to the use of [only one radio for WiFi and BLE for ESP32](https://docs.espressif.com/projects/esp-idf/en/v5.1.1/esp32/api-guides/coexist.html), so once bluetooth is connected, WiFi will became slow, very slow and laggy but this is normal and cannot be optimized further (this is mainly the reason to use hardware keys instead of a webUI).
+Note: there is an *important hardware limitation* because there is [only one radio for WiFi and BLE on ESP32](https://docs.espressif.com/projects/esp-idf/en/v5.1.1/esp32/api-guides/coexist.html), so once bluetooth is connected, WiFi will became slow, very slow and laggy but this is normal and cannot be optimized further (this is mainly the reason to use hardware keys instead of the webUI).
 
-There is space for further improvements and Arduino Nano ESP32 is used only for ~35% of program space and ~20% of RAM. Suggestions and PR are very welcome! About Arduino-TOTP and ESP32-NimBLE-Keyboard, I'll fork and ask per PRs, but it's not the focus of this project.
+About the webUI: I'm NOT an UI/UX developer :-) So settle like this or write something better and PR me :-)
+
+There is space for further improvements and Arduino Nano ESP32 is used only for ~35% of program space and ~20% of RAM. Suggestions and PR are very welcome! About Arduino-TOTP and ESP32-NimBLE-Keyboard, I'll have to fork and submit PRs, but it's not the focus of this project.
 
 ## License and release notes
 This is a PoC and its use will be everyone's responsibility; the author releses this code "as-is" and assumes no responsibility at all! This project is released under GPLv3.
