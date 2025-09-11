@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.formautofill.min.js"></script>
+    <script src="js/mutinypass.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<br/>
+
+<div class="container">
+    <div class="row form-actions">
+    </div>
+</div>
+
+<br/>
+
+<form action="save1" method="post">
+<div class="container">
+    <div class="row form-account empty-account">
+        <div class="col sm d-flex justify-content-center">
+            <input class="form-control form-control-sm" type="hidden" name="uuid" id="uuid" value=""/>
+            <input class="form-control form-control-sm" type="text" name="name" id="name" placeholder="account name"/>
+            <input class="form-control form-control-sm" type="text" name="sequence" id="sequence" placeholder="key press sequence"/>
+            <input class="form-control form-control-sm" type="text" name="username" id="username" placeholder="username"/>
+            <input class="form-control form-control-sm" type="password" name="password" id="password" placeholder="password"/>
+            <select class="form-control form-control-sm" name="otp" id="otp">
+                <option value="">(otp)</option>
+            </select>
+            <select class="form-control form-control-sm" name="pin" id="pin">
+                <option value="0">(hw pin)</option>
+                <option value="2">D2</option>
+                <option value="3">D3</option>
+                <option value="4">D4</option>
+                <option value="5">D5</option>
+                <option value="6">D6</option>
+                <option value="7">D7</option>
+                <option value="8">D8</option>
+                <option value="9">D9</option>
+                <option value="10">D10</option>
+                <option value="11">D11</option>
+                <option value="12">D12</option>
+            </select>
+            <input class="form-control form-control-sm btn btn-success add" type="button" value="+"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col sm d-flex justify-content-center">
+             <button type="submit" class="form-control form-control-sm btn btn-primary" id="save">Save accounts and key sequences</button>
+        </div>
+    </div>
+</div>
+</form>
+<form action="save2" method="post">
+    <div class="container">
+        <div class="row form-otp empty-otp">
+            <div class="col sm d-flex justify-content-center">
+                <input class="form-control form-control-sm" type="hidden" name="uuid" id="uuid" value=""/>
+                <input class="form-control form-control-sm" type="text" name="name" id="name" placeholder="OTP name"/>
+                <input class="form-control form-control-sm" type="password" name="secret" id="secret" placeholder="secret"/>
+                <select class="form-control form-control-sm" name="algorithm" id="algorithm">
+                    <option value="SHA1">SHA1</option>
+                    <option value="SHA256">SHA256</option>
+                    <option value="SHA512">SHA512</option>
+                </select>
+                <select class="form-control form-control-sm" name="digits" id="digits">
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                </select>
+                <input class="form-control form-control-sm" type="text" name="timestep" id="timestep" placeholder="OTP time step"/>
+                <input class="form-control form-control-sm btn btn-success add" type="button" value="+"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col sm d-flex justify-content-center">
+                 <button type="submit" class="form-control form-control-sm btn btn-primary" id="save">Save OPT configurations</button>
+            </div>
+        </div>
+    </div>
+</form>
+<form action="save3" method="post">
+    <div class="container">
+        <div class="row" id="form-config">
+            <div class="form-group">
+                <label for="layout">Keyboard layout:</label>
+                <select class="form-control form-control-sm" name="layout" id="layout">
+                    <option value="US">US</option>
+                    <option value="DK">DK</option>
+                    <option value="DE">DE</option>
+                    <option value="ES">ES</option>
+                    <option value="FR">FR</option>
+                    <option value="HU">HU</option>
+                    <option value="IT">IT</option>
+                    <option value="BR">BR</option>
+                    <option value="PT">PT</option>
+                    <option value="SE">SE</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="keydelay">Delay between multiple keystrokes (ms):</label>
+                <select class="form-control form-control-sm" name="keydelay" id="keydelay">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ntpserver">NTP server configuration:</label>
+                <input class="form-control form-control-sm" type="text" name="ntpserver" id="ntpserver" placeholder="NTP server"/>
+            </div>
+            <div class="form-group">
+                <label for="tzname">Time zone configuration:</label>
+                <select class="form-control form-control-sm" name="tzname" id="tzname"></select>
+                <input class="form-control form-control-sm" type="text" name="tzconfig" id="tzconfig" placeholder="TZ configuration"/>
+            </div>
+            <div class="form-group">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" name="lock" id="lock" />
+                    <label class="form-check-label" for="lock">Anti desktop lock</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ntpserver">Anti desktop lock key:</label>
+                <select class="form-control form-control-sm" name="lockkey" id="lockkey">
+                    <option value="ESC">ESC</option>
+                    <option value="LEFT_CTRL">LEFT_CTRL</option>
+                    <option value="LEFT_SHIFT">LEFT_SHIFT</option>
+                    <option value="LEFT_ALT">LEFT_ALT</option>
+                    <option value="RIGHT_CTRL">RIGHT_CTRL</option>
+                    <option value="RIGHT_SHIFT">RIGHT_SHIFT</option>
+                    <option value="RIGHT_ALT">RIGHT_ALT</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ntpserver">Anti desktop lock interval:</label>
+                <select class="form-control form-control-sm" name="locktime" id="locktime">
+                    <option value="60">60</option>
+                    <option value="120">120</option>
+                    <option value="300">300</option>
+                    <option value="600">600</option>
+                    <option value="900">900</option>
+                    <option value="1800">1800</option>
+                    <option value="3600">3600</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" name="factory" id="factory" />
+                    <label class="form-check-label" for="factory">Reset all settings to factory defaults</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col sm d-flex justify-content-center">
+                 <button type="submit" class="form-control form-control-sm btn btn-primary" id="save">Save configuration</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>
