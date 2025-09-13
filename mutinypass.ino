@@ -188,7 +188,7 @@ void saveConfig() {
     File file = FFat.open(configFile, FILE_WRITE);
 	cfg["layout"] = layout;
 	cfg["keydelay"] = keyDelay;
-	cfg["lock"] = lockEnabled;
+	cfg["lock"] = (lockEnabled) ? "on" : "off";
 	cfg["locktime"] = lockTime;
 	cfg["lockkey"] = lockKey;
 	cfg["ntpserver"] = ntpServer;
@@ -318,6 +318,7 @@ void handleSave2(AsyncWebServerRequest *request) {
 
 // read configuration form inputs and set parameters
 void handleSave3(AsyncWebServerRequest *request) {
+	lockEnabled = false;
    	size_t count = request->params();
     for (size_t i = 0; i < count; i++) {
     	const AsyncWebParameter *p = request->getParam(i);
@@ -438,6 +439,7 @@ void loop() {
 	// put your main code here, to run repeatedly:
 	// delete configuration and restart to reload factory defaults
 	if (factory == true) {
+		WiFi.disconnect(false, true);
 		FFat.remove(configFile);
     	ESP.restart();
 	}
