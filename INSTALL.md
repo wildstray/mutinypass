@@ -43,6 +43,8 @@ Sequences are macros like these:
 
 Likewise, you can configure one or more OTP generator. Name and secret (BASE32 encoded) are mandatory (or the configuration will not be saved). You can specify an algorithm (default SHA1), the number of digits (default 6) and a time step (default 30 seconds).
 
+If you want to reset MutinyPass to factory default (including WiFi settings), you have to enable the flag *Reset all settings to factory defaults*. The ESP32 will restart in AP mode and with all default settings.
+
 ## Using MutinyPass
 
 The most importan think is to associate the emulated BLE keyboard with your PC. The "keyboard" is visibile as *ESP32 keyboard* and you che freely associate it. BEWARE: you can associate only one PC (or tablet or phone) a time.
