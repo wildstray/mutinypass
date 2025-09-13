@@ -13,52 +13,52 @@
 
 <body>
 
-<br/>
+    <br/>
 
-<div class="container">
-    <div class="row form-actions">
-    </div>
-</div>
-
-<br/>
-
-<form action="save1" method="post">
-<div class="container">
-    <div class="row form-account empty-account">
-        <div class="col sm d-flex justify-content-center">
-            <input class="form-control form-control-sm" type="hidden" name="uuid" id="uuid" value=""/>
-            <input class="form-control form-control-sm" type="text" name="name" id="name" placeholder="account name"/>
-            <input class="form-control form-control-sm" type="text" name="sequence" id="sequence" placeholder="key press sequence"/>
-            <input class="form-control form-control-sm" type="text" name="username" id="username" placeholder="username"/>
-            <input class="form-control form-control-sm" type="password" name="password" id="password" placeholder="password"/>
-            <select class="form-control form-control-sm" name="otp" id="otp">
-                <option value="">(otp)</option>
-            </select>
-            <select class="form-control form-control-sm" name="pin" id="pin">
-                <option value="0">(hw pin)</option>
-                <option value="2">D2</option>
-                <option value="3">D3</option>
-                <option value="4">D4</option>
-                <option value="5">D5</option>
-                <option value="6">D6</option>
-                <option value="7">D7</option>
-                <option value="8">D8</option>
-                <option value="9">D9</option>
-                <option value="10">D10</option>
-                <option value="11">D11</option>
-                <option value="12">D12</option>
-            </select>
-            <input class="form-control form-control-sm btn btn-success add" type="button" value="+"/>
+    <div class="container">
+        <div class="row form-actions">
         </div>
     </div>
-    <div class="row">
-        <div class="col sm d-flex justify-content-center">
-             <button type="submit" class="form-control form-control-sm btn btn-primary" id="save">Save accounts and key sequences</button>
-        </div>
-    </div>
-</div>
-</form>
-<form action="save2" method="post">
+
+    <br/>
+
+    <form action="save1" method="post">
+        <div class="container">
+            <div class="row form-account empty-account">
+                <div class="col sm d-flex justify-content-center">
+                    <input class="form-control form-control-sm" type="hidden" name="uuid" id="uuid" value=""/>
+                    <input class="form-control form-control-sm" type="text" name="name" id="name" placeholder="account name"/>
+                    <input class="form-control form-control-sm" type="text" name="sequence" id="sequence" placeholder="key press sequence"/>
+                    <input class="form-control form-control-sm" type="text" name="username" id="username" placeholder="username"/>
+                    <input class="form-control form-control-sm" type="password" name="password" id="password" placeholder="password"/>
+                    <select class="form-control form-control-sm" name="otp" id="otp">
+                        <option value="">(otp)</option>
+                    </select>
+                    <select class="form-control form-control-sm" name="pin" id="pin">
+                        <option value="0">(hw pin)</option>
+                        <option value="2">D2</option>
+                        <option value="3">D3</option>
+                        <option value="4">D4</option>
+                        <option value="5">D5</option>
+                        <option value="6">D6</option>
+                        <option value="7">D7</option>
+                        <option value="8">D8</option>
+                        <option value="9">D9</option>
+                        <option value="10">D10</option>
+                        <option value="11">D11</option>
+                        <option value="12">D12</option>
+                    </select>
+                    <input class="form-control form-control-sm btn btn-success add" type="button" value="+"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col sm d-flex justify-content-center">
+                   <button type="submit" class="form-control form-control-sm btn btn-primary" id="save">Save accounts and key sequences</button>
+               </div>
+           </div>
+       </div>
+   </form>
+   <form action="save2" method="post">
     <div class="container">
         <div class="row form-otp empty-otp">
             <div class="col sm d-flex justify-content-center">
@@ -81,10 +81,10 @@
         </div>
         <div class="row">
             <div class="col sm d-flex justify-content-center">
-                 <button type="submit" class="form-control form-control-sm btn btn-primary" id="save">Save OPT configurations</button>
-            </div>
-        </div>
-    </div>
+               <button type="submit" class="form-control form-control-sm btn btn-primary" id="save">Save OPT configurations</button>
+           </div>
+       </div>
+   </div>
 </form>
 <form action="save3" method="post">
     <div class="container">
@@ -162,10 +162,10 @@
         </div>
         <div class="row">
             <div class="col sm d-flex justify-content-center">
-                 <button type="submit" class="form-control form-control-sm btn btn-primary" id="save">Save configuration</button>
-            </div>
-        </div>
-    </div>
+               <button type="submit" class="form-control form-control-sm btn btn-primary" id="save">Save configuration</button>
+           </div>
+       </div>
+   </div>
 </form>
 
 </body>

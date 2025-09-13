@@ -1,3 +1,7 @@
 .add,.remove {
     width: 40px;
 }
+#pin,#algorithm,#digits,#timestep {
+    width: 160px;
+}
+
